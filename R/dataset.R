@@ -14,7 +14,8 @@ tableau <- read_html("https://fr.wikipedia.org/wiki/Épidémie_de_maladie_à_cor
   html_table(fill = TRUE) 
 
 # extraction du tableau d'interêt.
-tab <- tableau[[3]]
+tab <- tableau[[2]]  # evolution journalière
+tab <- tableau[[3]] # evolution par zone
 
 # modification du tableau afin d'en faire un beau tableau cas par variable
 
