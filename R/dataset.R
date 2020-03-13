@@ -60,6 +60,9 @@ tab_geo <- unique(tab_geo)
 tab_geo <- separate(tab_geo, col = "Provinces", into = c("Provinces", "Malades"), sep = ": ")
 tab_geo$Malades <- as.numeric(tab_geo$Malades)
 
+tab_geo <- filter(tab_geo, 
+  !stringr::str_detect(Provinces, "^Tot") | stringr::str_detect(Régions, "Capitale$"))
+
 #tab_geo[!grepl("Total", tab_geo$Provinces[tab_geo$Régions != "Région de Bruxelles-Capitale"]), ] -> tab_geo
 #Pour une raison quelconque, cette ligne ne fonctionne. Elle est sensé supprimer toutes les lignes avec "Total" dans la colonne "Provinces" sauf si "Régions" est Bruxelles capitale. Sauf que non seulement la dernière ligne (total) est toujours là, mais elle supprime "Région wallonne/Lieux inconnus". J'ai essayé plusieurs méthodes différentes sans aucun succès (comme filter, ou même subset).
 
